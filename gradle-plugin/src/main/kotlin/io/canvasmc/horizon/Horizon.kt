@@ -78,8 +78,7 @@ abstract class Horizon : Plugin<Project> {
         // ensure people specify a dependency on horizon api
         // checkForHorizonApi()
         val userdevExt = extensions.getByType(PaperweightUserExtension::class)
-        // TODO: could we mimic this for normal paperweight??
-        // Probably would be dirty.
+        // Horizon integrates against weaver-userdev internals here, so we keep this explicit.
         userdevExt.injectServerJar.set(false) // dont add the server jar to the configurations as we override it
         userdevExt.injectServerJar.disallowChanges()
         val userdevTask = tasks.named<UserdevSetupTask>(Paperweight.USERDEV_SETUP_TASK_NAME)
